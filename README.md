@@ -1,0 +1,2 @@
+# Consumption
+Small calculation program
