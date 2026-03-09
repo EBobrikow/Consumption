@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "r8vaUPEoilc=",
+  "dgSpecHash": "J/H0FLp7Y8s=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Linch\\source\\repos\\WinFormsApp1\\WinFormsApp1\\WinFormsApp1.csproj",
+  "projectFilePath": "D:\\WorkPlace\\Consumption\\WinFormsApp1\\WinFormsApp1\\WinFormsApp1.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Linch\\.nuget\\packages\\nlog\\6.1.1\\nlog.6.1.1.nupkg.sha512"
   ],

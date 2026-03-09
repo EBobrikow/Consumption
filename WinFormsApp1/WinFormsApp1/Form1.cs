@@ -12,12 +12,15 @@ namespace WinFormsApp1
             woodCoefTxtBox.Enabled = false;
             temperatureTxtBox.Enabled = false;
             StoveKKDTxtBox.Enabled = false;
+
+            ModeComboBox.Items.Add("Дрова");
+            ModeComboBox.Items.Add("Брикети");
+
+            ModeComboBox.SelectedIndex = 0;
         }
 
         private void CalcBtn_Click(object sender, EventArgs e)
         {
-            int i = 1;
-            int j = 1;
             UpdateCounts();
         }
 
@@ -55,6 +58,11 @@ namespace WinFormsApp1
             {
                 StoveKKDTxtBox.Enabled = false;
             }
+        }
+
+        private void ModeComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SelectedComboBoxIndex = ModeComboBox.SelectedIndex;
         }
     }
 }

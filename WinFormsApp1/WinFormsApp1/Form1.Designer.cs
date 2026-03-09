@@ -46,6 +46,7 @@ namespace WinFormsApp1
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
         private DateTime startDate;
         private DateTime dewDate;
+        private int SelectedComboBoxIndex = 0;
 
         Dictionary<int, Dictionary<int, float>> USTConsumptionTable = new Dictionary<int, Dictionary<int, float>>()
         {
@@ -100,11 +101,13 @@ namespace WinFormsApp1
             StoveKKDTxtBox = new RichTextBox();
             label7 = new Label();
             StoveKKDCheckBox = new CheckBox();
+            ModeComboBox = new ComboBox();
+            label8 = new Label();
             SuspendLayout();
             // 
             // temperatureTxtBox
             // 
-            temperatureTxtBox.Location = new Point(264, 36);
+            temperatureTxtBox.Location = new Point(46, 87);
             temperatureTxtBox.Name = "temperatureTxtBox";
             temperatureTxtBox.Size = new Size(131, 22);
             temperatureTxtBox.TabIndex = 0;
@@ -112,14 +115,14 @@ namespace WinFormsApp1
             // 
             // startDatePicker
             // 
-            startDatePicker.Location = new Point(45, 96);
+            startDatePicker.Location = new Point(46, 128);
             startDatePicker.Name = "startDatePicker";
             startDatePicker.Size = new Size(200, 23);
             startDatePicker.TabIndex = 1;
             // 
             // dewDatePicker
             // 
-            dewDatePicker.Location = new Point(333, 96);
+            dewDatePicker.Location = new Point(310, 128);
             dewDatePicker.Name = "dewDatePicker";
             dewDatePicker.Size = new Size(200, 23);
             dewDatePicker.TabIndex = 2;
@@ -127,7 +130,7 @@ namespace WinFormsApp1
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(264, 20);
+            label1.Location = new Point(46, 71);
             label1.Name = "label1";
             label1.Size = new Size(176, 15);
             label1.TabIndex = 4;
@@ -135,7 +138,7 @@ namespace WinFormsApp1
             // 
             // USTCountTxtBox
             // 
-            USTCountTxtBox.Location = new Point(22, 38);
+            USTCountTxtBox.Location = new Point(253, 38);
             USTCountTxtBox.Name = "USTCountTxtBox";
             USTCountTxtBox.Size = new Size(95, 20);
             USTCountTxtBox.TabIndex = 6;
@@ -144,7 +147,7 @@ namespace WinFormsApp1
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(22, 20);
+            label2.Location = new Point(253, 20);
             label2.Name = "label2";
             label2.Size = new Size(80, 15);
             label2.TabIndex = 7;
@@ -153,7 +156,7 @@ namespace WinFormsApp1
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(127, 20);
+            label3.Location = new Point(415, 20);
             label3.Name = "label3";
             label3.Size = new Size(81, 15);
             label3.TabIndex = 9;
@@ -161,7 +164,7 @@ namespace WinFormsApp1
             // 
             // USBCountTxtBox
             // 
-            USBCountTxtBox.Location = new Point(127, 38);
+            USBCountTxtBox.Location = new Point(415, 38);
             USBCountTxtBox.Name = "USBCountTxtBox";
             USBCountTxtBox.Size = new Size(95, 20);
             USBCountTxtBox.TabIndex = 8;
@@ -170,7 +173,7 @@ namespace WinFormsApp1
             // temperatureCheckBoc
             // 
             temperatureCheckBoc.AutoSize = true;
-            temperatureCheckBoc.Location = new Point(243, 40);
+            temperatureCheckBoc.Location = new Point(25, 91);
             temperatureCheckBoc.Name = "temperatureCheckBoc";
             temperatureCheckBoc.Size = new Size(15, 14);
             temperatureCheckBoc.TabIndex = 10;
@@ -180,7 +183,7 @@ namespace WinFormsApp1
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(278, 102);
+            label4.Location = new Point(257, 132);
             label4.Name = "label4";
             label4.Size = new Size(21, 15);
             label4.TabIndex = 11;
@@ -188,7 +191,7 @@ namespace WinFormsApp1
             // 
             // CalcBtn
             // 
-            CalcBtn.Location = new Point(632, 96);
+            CalcBtn.Location = new Point(415, 417);
             CalcBtn.Name = "CalcBtn";
             CalcBtn.Size = new Size(83, 23);
             CalcBtn.TabIndex = 12;
@@ -200,22 +203,22 @@ namespace WinFormsApp1
             // 
             outputTxtBox.Location = new Point(22, 169);
             outputTxtBox.Name = "outputTxtBox";
-            outputTxtBox.Size = new Size(693, 242);
+            outputTxtBox.Size = new Size(488, 242);
             outputTxtBox.TabIndex = 13;
             outputTxtBox.Text = "";
             // 
             // woodCoefTxtBox
             // 
-            woodCoefTxtBox.Location = new Point(475, 36);
+            woodCoefTxtBox.Location = new Point(257, 87);
             woodCoefTxtBox.Name = "woodCoefTxtBox";
-            woodCoefTxtBox.Size = new Size(105, 22);
+            woodCoefTxtBox.Size = new Size(91, 22);
             woodCoefTxtBox.TabIndex = 14;
             woodCoefTxtBox.Text = "500";
             // 
             // woodCoefCheckBox
             // 
             woodCoefCheckBox.AutoSize = true;
-            woodCoefCheckBox.Location = new Point(454, 40);
+            woodCoefCheckBox.Location = new Point(236, 91);
             woodCoefCheckBox.Name = "woodCoefCheckBox";
             woodCoefCheckBox.Size = new Size(15, 14);
             woodCoefCheckBox.TabIndex = 15;
@@ -225,7 +228,7 @@ namespace WinFormsApp1
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(475, 20);
+            label5.Location = new Point(257, 71);
             label5.Name = "label5";
             label5.Size = new Size(97, 15);
             label5.TabIndex = 16;
@@ -234,7 +237,7 @@ namespace WinFormsApp1
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(22, 102);
+            label6.Location = new Point(23, 134);
             label6.Name = "label6";
             label6.Size = new Size(12, 15);
             label6.TabIndex = 17;
@@ -242,16 +245,16 @@ namespace WinFormsApp1
             // 
             // StoveKKDTxtBox
             // 
-            StoveKKDTxtBox.Location = new Point(633, 36);
+            StoveKKDTxtBox.Location = new Point(415, 87);
             StoveKKDTxtBox.Name = "StoveKKDTxtBox";
-            StoveKKDTxtBox.Size = new Size(82, 22);
+            StoveKKDTxtBox.Size = new Size(95, 22);
             StoveKKDTxtBox.TabIndex = 18;
             StoveKKDTxtBox.Text = "0.8";
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(632, 20);
+            label7.Location = new Point(414, 71);
             label7.Name = "label7";
             label7.Size = new Size(74, 15);
             label7.TabIndex = 19;
@@ -260,18 +263,39 @@ namespace WinFormsApp1
             // StoveKKDCheckBox
             // 
             StoveKKDCheckBox.AutoSize = true;
-            StoveKKDCheckBox.Location = new Point(612, 40);
+            StoveKKDCheckBox.Location = new Point(394, 91);
             StoveKKDCheckBox.Name = "StoveKKDCheckBox";
             StoveKKDCheckBox.Size = new Size(15, 14);
             StoveKKDCheckBox.TabIndex = 20;
             StoveKKDCheckBox.UseVisualStyleBackColor = true;
             StoveKKDCheckBox.CheckedChanged += StoveKKDCheckBox_CheckedChanged;
             // 
+            // ModeComboBox
+            // 
+            ModeComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            ModeComboBox.FormattingEnabled = true;
+            ModeComboBox.Location = new Point(46, 35);
+            ModeComboBox.Name = "ModeComboBox";
+            ModeComboBox.Size = new Size(121, 23);
+            ModeComboBox.TabIndex = 21;
+            ModeComboBox.SelectedIndexChanged += ModeComboBox_SelectedIndexChanged;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(46, 20);
+            label8.Name = "label8";
+            label8.Size = new Size(69, 15);
+            label8.TabIndex = 22;
+            label8.Text = "Тип палива";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(740, 450);
+            ClientSize = new Size(530, 460);
+            Controls.Add(label8);
+            Controls.Add(ModeComboBox);
             Controls.Add(StoveKKDCheckBox);
             Controls.Add(label7);
             Controls.Add(StoveKKDTxtBox);
@@ -320,7 +344,8 @@ namespace WinFormsApp1
         private RichTextBox StoveKKDTxtBox;
         private Label label7;
         private CheckBox StoveKKDCheckBox;
-
+        private ComboBox ModeComboBox;
+        private Label label8;
 
 
         static async Task<List<CurrentWeather>> GetWeather(DateTime start, DateTime end)
@@ -369,28 +394,33 @@ namespace WinFormsApp1
             if (!int.TryParse(temperatureTxtBox.Text, out temperatureInside))
             {
                 Logger.Error("Failed to read temperature as int");
+                outputTxtBox.Text = "Невдалось зчитати температуру як число";
             }
 
             if (woodCoefCheckBox.Checked)
             if (!int.TryParse(woodCoefTxtBox.Text, out woodCoef))
             {
                 Logger.Error("Failed to read wood cooficient as int");
+                outputTxtBox.Text = "Невдалось зчитати коефіціент дров як число";
             }
 
             if (StoveKKDCheckBox.Checked)
             if (!float.TryParse(StoveKKDTxtBox.Text, out stoveKKD))
             {
                 Logger.Error("Failed to read stove KKD as float");
+                outputTxtBox.Text = "Невдалось зчитати ККД печей як число або дріб";
             }
 
             if (!int.TryParse(USTCountTxtBox.Text, out USTCount))
             {
                 Logger.Error("Failed to read USTCount as int");
+                outputTxtBox.Text = "Невдалось зчитати кількість УСТ як число";
             }
 
             if (!int.TryParse(USBCountTxtBox.Text, out USBCount))
             {
                 Logger.Error("Failed to read USBCount as int");
+                outputTxtBox.Text = "Невдалось зчитати кількість УСБ як число";
             }
 
             startDate = startDatePicker.Value;
@@ -407,40 +437,41 @@ namespace WinFormsApp1
                 int diffWind = (int)result[i].WindSpeed / 2; diffWind *= 2;
                 if (diffWind > 14) { diffWind = 14; }
                 if (USTConsumptionTable.TryGetValue(diffWind, out Dictionary<int, float> localDictionaryUST))
-                {
-                    //int signedVal = (int)result[i].Temperature > 0 ? 1 : -1;
+                {                    
                     int diffTemp = (int)result[i].Temperature / 5; 
                     diffTemp *= 5 ;
                     if (localDictionaryUST.TryGetValue(diffTemp, out float woodValue))
                     {
                         float temperatureCoef = (temperatureInside - result[i].Temperature) / (18 - result[i].Temperature);
-                        USTWoodValue = woodValue * temperatureCoef;
-                        //outputTxtBox
-                        string res = woodValue.ToString() + " \n";
-                        outputTxtBox.Text = res;
+                        USTWoodValue = woodValue * temperatureCoef; 
                     }
                 }
 
                 if (USBConsumptionTable.TryGetValue(diffWind, out Dictionary<int, float> localDictionaryUSB))
-                {
-                    //int signedVal = (int)result[i].Temperature > 0 ? 1 : -1;
+                {                  
                     int diffTemp = (int)result[i].Temperature / 5;
                     diffTemp *= 5;
                     if (localDictionaryUSB.TryGetValue(diffTemp, out float woodValue))
                     {
                         float temperatureCoef = (temperatureInside - result[i].Temperature) / (18 - result[i].Temperature);
                         USBWoodValue = woodValue * temperatureCoef;
-                        //outputTxtBox
-                        string res = woodValue.ToString() + " \n";
-                        outputTxtBox.Text = res;
                     }
                 }
 
-                float consumptionValueKg = ((USTWoodValue * 2 * USTCount) + (USBWoodValue * 2 * USBCount)) / stoveKKD;
-                float consumptionValueCube = consumptionValueKg / woodCoef;
+                float consumptionValue = ((USTWoodValue * 2 * USTCount) + (USBWoodValue * 2 * USBCount)) / stoveKKD;
+                string tmpResult = result[i].Time + "  Вітер = " + result[i].WindSpeed.ToString() + " Температура = " + result[i].Temperature.ToString();
+               
 
-                string tmpResult = result[i].Time + "  Вітер = " + result[i].WindSpeed.ToString() + " Температура = " + result[i].Temperature.ToString() +
-                    " Розхід дров у кг = " + consumptionValueKg.ToString() + ", у м3 = " + consumptionValueCube.ToString() + "\n";
+                if (SelectedComboBoxIndex == 0)
+                {
+                    consumptionValue = consumptionValue / 0.266f / woodCoef;
+                    tmpResult += " Розхід = " + consumptionValue.ToString() + " м3 дров \n";
+                }
+                else 
+                {
+                    consumptionValue /= 0.578f;
+                    tmpResult += " Розхід = " + consumptionValue.ToString() + " кг брикетів \n";
+                }
 
                 outputResult += tmpResult;
             }
@@ -450,6 +481,6 @@ namespace WinFormsApp1
 
         }
 
-     
+        
     }
 }
